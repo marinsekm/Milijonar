@@ -1,0 +1,190 @@
+
+/* Ozadje z zameglitvijo */
+
+.bg-blur {
+ position: fixed;
+ top: 0; left: 0;
+ width: 100%;
+ height: 100%;
+ background-image: url('slike/ozadje.jpg'); 
+ background-size: cover;
+ background-position: center;
+ filter: blur(8px);
+
+}
+
+/* Da vsebina ustane na vrhu */
+.header, #obrazec {
+ position: relative;
+}
+
+
+/*  za telo */
+body {
+ font-family: Arial, sans-serif;
+ background-color: #2d1050;
+ color: white;
+ text-align: center;
+ min-height: 100vh;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding: 20px;
+}
+
+/* Glavni obrazec */
+#obrazec {
+ background-color: rgba(74, 17, 166, 0.9);
+ padding: 40px 50px;
+ border-radius: 15px;
+ width: 320px;
+}
+
+/* Naslovi */
+h1 {
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Vnosi in polja */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+ width: 100%;
+ padding: 12px 10px;
+ margin: 12px 0;
+ border: none;
+ border-radius: 7px;
+ font-size: 16px;
+}
+
+/* Gumbi */
+input[type="submit"],
+button {
+ background-color: #451d76;
+ color: white;
+ border: none;
+ padding: 15px;
+ width: 100%;
+ border-radius: 10px;
+ font-size: 18px;
+ cursor: pointer;
+ margin-top: 20px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+ background-color: #57387c;
+
+}
+
+/* Povezave */
+a {
+ color: #bb86fc;
+}
+
+/* Odstavki */
+p {
+ margin-top: 40px;
+ font-size: 16px;
+}
+
+/*za index header */
+.header-bar {
+ width: 100%;
+ height: 80px; /* višina */
+ background-color: rgba(74, 17, 166, 0.9);
+ padding: 0px 20px;
+ position: fixed;
+ top: 0;
+ left: 0px;
+
+}
+
+.logout-btn {
+ background-color: #451d76;
+ padding: 10px 20px;
+ border-radius: 8px;
+ font-size: 16px;
+ cursor: pointer;
+ max-width: 150px;
+
+}
+
+.logout-btn:hover {
+  background-color: #57387c;
+}
+
+/* igra */
+
+.igra-obrazec {
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  max-width: 1200px;
+  width: 100%;
+
+}
+
+.vprasanje-box {
+  background-color: black;
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.odgovori button {
+  margin: 10px 0px;
+  width: 90%;
+  padding: 20px;
+  font-size: 16px;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.odgovori button:hover {
+ background-color: #555;
+}
+
+.lestvica {
+  background-color: black;
+  padding: 20px;
+  width: 30%;
+  border-radius: 10px;
+  text-align: left;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+.lestvica ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+.lestvica li {
+  list-style: none;
+  margin: 5px 5px;
+  padding: 10px;
+  border-bottom: 1px solid white;
+  font-weight: bold;
+}
+
+.lestvica .aktivno {
+  background-color: blue;
+  border-radius: 5px;
+  padding: 8px;
+  color: white;
+}
+.bg {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('slike/igra.jpg'); 
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
