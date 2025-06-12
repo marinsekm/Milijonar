@@ -13,31 +13,25 @@ if (!isset($_SESSION['trenutno'])) {  //ce se igra zacenja, nastavi na prvo vpra
     $_SESSION['trenutno'] = 0;
 }
 
-function shraniRezultat($link, $idUporabnika, $dosezenoVp, $zasluzenDenar, $porabljenCas) {
-    // Vstavi v tabelo igre z ID uporabnika
-$sql = "INSERT INTO igre (id_u, dosezeno_vprasanje, zasluzen_denar, konec, porabljen_cas) 
-VALUES (?, ?, ?, NOW(), ?)";
-    $stmt = mysqli_prepare($link, $sql);
-    mysqli_stmt_bind_param($stmt, 'iiis', $idUporabnika, $dosezenoVp, $zasluzenDenar, $porabljenCas);
-    mysqli_stmt_execute($stmt);
+function shraniRezultat($link, $idUporabnika, $dosezenoVp, $zasluzenDenar, $porabljenCas) {  
+    // Varnostni filter za vhodne podatke
+    $idUporabnika = (int)$idUporabnika;
+    $dosezenoVp = (int)$dosezenoVp;
+    $zasluzenDenar = (int)$zasluzenDenar;
+    $porabljenCas = mysqli_real_escape_string($link, $porabljenCas);
 
-    // Debug napaka
-    if (mysqli_stmt_errno($stmt)) {
-    die("Napaka pri INSERT: " . mysqli_stmt_error($stmt));
+    // INSERT v tabelo igre
+    $sql = "INSERT INTO igre (id_u, dosezeno_vprasanje, zasluzen_denar, konec, porabljen_cas) 
+            VALUES ($idUporabnika, $dosezenoVp, $zasluzenDenar, NOW(), '$porabljenCas')";
+
+    if (!mysqli_query($link, $sql)) {
+        die("Napaka pri INSERT: " . mysqli_error($link));
     }
 
     $idIgre = mysqli_insert_id($link);
 
-    // Posodobi uporabnika z id igre 
-    $sql2 = "UPDATE uporabniki SET id_ig = ? WHERE id_u = ?";
-    $stmt2 = mysqli_prepare($link, $sql2);
-    mysqli_stmt_bind_param($stmt2, 'ii', $idIgre, $idUporabnika);
-    mysqli_stmt_execute($stmt2);
-
-    if (mysqli_stmt_errno($stmt2)) {
-    die("Napaka pri UPDATE: " . mysqli_stmt_error($stmt2));
-    }
 }
+
 
 
 if (isset($_POST['odneha'])) {
